@@ -1,0 +1,57 @@
+/* 继承 app.wxss 的变量 */
+
+.main-content {
+  position: relative;
+  z-index: 1;
+  padding-top: 60rpx;
+}
+
+.header-guide {
+  padding: 40rpx 60rpx;
+  color: #ffffff;
+}
+
+.guide-title {
+  font-size: 44rpx;
+  font-weight: 600;
+  letter-spacing: 2rpx;
+}
+
+.guide-desc {
+  font-size: 26rpx;
+  margin-top: 16rpx;
+  opacity: 0.8;
+}
+
+/* 覆盖卡片间距 */
+.system-card {
+  margin-top: 20rpx !important;
+  padding: 20rpx 0;
+}
+
+/* 验证码按钮微调 */
+.code-btn {
+  width: 200rpx !important;
+  border: 1px solid var(--color-primary) !important;
+  color: var(--color-primary) !important;
+  font-size: 24rpx !important;
+  height: 60rpx !important;
+}
+
+.action-section {
+  margin-top: 100rpx;
+  padding: 0 60rpx;
+}
+
+.tips-text {
+  text-align: center;
+  margin-top: 40rpx;
+  font-size: 26rpx;
+  color: var(--text-tips);
+}
+
+/* 倒计时样式微调 */
+.van-count-down {
+  color: var(--color-primary) !important;
+  font-size: 24rpx !important;
+}

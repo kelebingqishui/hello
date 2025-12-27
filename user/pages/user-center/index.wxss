@@ -1,0 +1,22 @@
+page {
+  background-color: #f7f8fa;
+}
+
+.setting-container {
+  padding-bottom: 60rpx;
+}
+
+.group-margin {
+  margin-top: 20rpx !important;
+}
+
+.footer-action {
+  margin: 80rpx 40rpx 0;
+}
+
+/* 调整 Vant 标题样式 */
+.van-cell-group__title {
+  padding: 30rpx 40rpx 15rpx !important;
+  font-size: 26rpx !important;
+  color: #969799 !important;
+}

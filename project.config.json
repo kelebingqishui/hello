@@ -1,0 +1,45 @@
+{
+  "description": "项目配置文件",
+  "packOptions": {
+    "ignore": [],
+    "include": []
+  },
+  "setting": {
+    "packNpmManually": false,
+    "packNpmRelationList": [],
+    "coverView": true,
+    "es6": true,
+    "postcss": true,
+    "minified": true,
+    "enhance": true,
+    "showShadowRootInWxmlPanel": true,
+    "babelSetting": {
+      "ignore": [],
+      "disablePlugins": [],
+      "outputPath": ""
+    },
+    "compileWorklet": false,
+    "uglifyFileName": false,
+    "uploadWithSourceMap": true,
+    "minifyWXSS": true,
+    "minifyWXML": true,
+    "localPlugins": false,
+    "disableUseStrict": false,
+    "useCompilerPlugins": [],
+    "condition": false,
+    "swc": false,
+    "disableSWC": true,
+    "bundle": false, 
+    "lazyloadPlaceholderEnable": false
+  },
+  "compileType": "miniprogram",
+  "libVersion": "3.3.4", 
+  "miniprogramRoot": "./",
+  "appid": "wx0b10e1e7b79e84c2",
+  "projectname": "HELLO",
+  "condition": {},
+  "editorSetting": {
+    "tabIndent": "auto",
+    "tabSize": 2
+  }
+}

@@ -1,0 +1,78 @@
+<view class="page-container">
+  <view class="system-header-bg"></view>
+
+  <view class="main-content">
+    <view class="header-guide">
+      <view class="guide-title">更换手机号</view>
+      <view class="guide-desc">验证通过后，下次可使用新手机号登录</view>
+    </view>
+
+    <view class="system-card">
+      <van-cell-group border="{{ false }}">
+        <van-field
+          label="当前手机"
+          value="{{ desensitizedPhone }}"
+          disabled
+          input-align="right"
+          border="{{ true }}"
+        />
+        
+        <van-field
+          label="新手机号"
+          value="{{ newPhone }}"
+          placeholder="请输入新手机号"
+          input-align="right"
+          border="{{ true }}"
+          type="number"
+          maxlength="11"
+          bind:change="onPhoneChange"
+        />
+
+        <van-field
+          label="验证码"
+          value="{{ code }}"
+          placeholder="请输入验证码"
+          input-align="right"
+          center
+          clearable
+          border="{{ false }}"
+          bind:change="onCodeChange"
+        >
+          <view slot="button">
+            <van-button 
+              size="small" 
+              plain 
+              round
+              type="primary" 
+              custom-class="code-btn"
+              bindtap="sendCode" 
+              disabled="{{ counting }}"
+            >
+              <text wx:if="{{ !counting }}">获取验证码</text>
+              <van-count-down 
+                wx:else 
+                time="{{ 60000 }}" 
+                format="ss 秒后重发" 
+                bind:finish="onCountDownFinish" 
+              />
+            </van-button>
+          </view>
+        </van-field>
+      </van-cell-group>
+    </view>
+
+    <view class="action-section">
+      <van-button 
+        custom-class="system-btn-main" 
+        block 
+        round 
+        bindtap="submitChange" 
+        loading="{{ loading }}"
+        disabled="{{ !canSubmit }}"
+      >
+        确认绑定
+      </van-button>
+      <view class="tips-text">遇到问题？联系客服</view>
+    </view>
+  </view>
+</view>

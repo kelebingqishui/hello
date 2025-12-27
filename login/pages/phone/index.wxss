@@ -1,0 +1,136 @@
+page {
+  background-color: #f8f9fa;
+}
+
+.header-bg {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 450rpx;
+  background: linear-gradient(180deg, #07c160 0%, #0ab356 100%);
+  clip-path: ellipse(100% 80% at 50% 20%);
+  z-index: 1;
+}
+
+.content-wrapper {
+  position: relative;
+  z-index: 2;
+  padding: 0 40rpx;
+}
+
+.welcome-box {
+  padding: 100rpx 0 60rpx 20rpx;
+  color: #fff;
+}
+
+.welcome-box .title {
+  font-size: 52rpx;
+  font-weight: bold;
+  letter-spacing: 2rpx;
+}
+
+.welcome-box .subtitle {
+  font-size: 26rpx;
+  opacity: 0.8;
+  margin-top: 16rpx;
+}
+
+.login-card {
+  background: #fff;
+  border-radius: 40rpx;
+  padding: 60rpx 40rpx;
+  box-shadow: 0 20rpx 60rpx rgba(0, 0, 0, 0.05);
+}
+
+.login-btn-wrap {
+  margin-top: 60rpx;
+}
+
+.main-btn {
+  height: 90rpx !important;
+  font-size: 32rpx !important;
+  font-weight: bold !important;
+  box-shadow: 0 10rpx 30rpx rgba(7, 193, 96, 0.2);
+}
+
+.protocol-box {
+  margin-top: 40rpx;
+  transition: all 0.3s;
+}
+
+.protocol-text {
+  font-size: 24rpx;
+  color: #999;
+}
+
+.link {
+  color: #07c160;
+}
+
+/* 底部区域 */
+.footer-area {
+  margin-top: 250rpx;
+  text-align: center;
+}
+
+.divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 50rpx;
+}
+
+.divider-line {
+  width: 80rpx;
+  height: 1px;
+  background: #e5e5e5;
+}
+
+.divider-text {
+  font-size: 24rpx;
+  color: #ccc;
+  margin: 0 20rpx;
+}
+
+.wechat-btn {
+  background: transparent !important;
+  border: none !important;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 24rpx;
+  color: #666;
+}
+
+.wechat-btn::after { border: none; }
+
+.icon-circle {
+  width: 100rpx;
+  height: 100rpx;
+  background: #fff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 16rpx;
+  box-shadow: 0 4rpx 20rpx rgba(0,0,0,0.05);
+}
+
+.brand-slogan {
+  margin-top: 120rpx;
+  font-size: 20rpx;
+  color: #ddd;
+  text-transform: uppercase;
+  letter-spacing: 4rpx;
+}
+
+/* 抖动动画 */
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-8rpx); }
+  75% { transform: translateX(8rpx); }
+}
+
+.shake {
+  animation: shake 0.3s ease-in-out;
+}

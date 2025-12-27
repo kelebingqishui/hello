@@ -1,0 +1,116 @@
+page {
+  background-color: #f7f8fa; /* 稍微深一点的底色，衬托卡片 */
+}
+
+.user-container {
+  min-height: 100vh;
+}
+
+/* 顶部蓝色背景 */
+.header-section {
+  width: 100%;
+  height: 440rpx;
+  background: linear-gradient(180deg, #1989fa 0%, #72aff3 70%, #f7f8fa 100%);
+  padding: 140rpx 40rpx 0; /* 避开状态栏 */
+  box-sizing: border-box;
+}
+
+/* 用户信息卡片布局 */
+.user-card {
+  display: flex;
+  justify-content: space-between; /* 名字在左，设置在右 */
+  align-items: center; /* 关键：垂直居中对齐 */
+  width: 100%;
+}
+
+.user-info-main {
+  display: flex;
+  align-items: center;
+}
+
+.avatar {
+  width: 130rpx;
+  height: 130rpx;
+  border-radius: 30rpx; /* 改为稍微方圆的形状，更现代 */
+  box-shadow: 0 4rpx 12rpx rgba(0, 0, 0, 0.1);
+}
+
+.user-text {
+  margin-left: 28rpx;
+  color: #fff;
+}
+
+.user-name {
+  font-size: 40rpx;
+  font-weight: 600;
+  display: block;
+  text-shadow: 0 2rpx 4rpx rgba(0, 0, 0, 0.1);
+}
+
+.user-phone {
+  font-size: 26rpx;
+  opacity: 0.85;
+  margin-top: 10rpx;
+  display: block;
+}
+
+.header-set-icon {
+  font-size: 48rpx !important;
+  color: #fff;
+  padding: 20rpx; /* 增加点击热区 */
+}
+
+/* 内容区域上移 */
+.content-wrapper {
+  margin-top: -80rpx;
+  padding: 0 32rpx 60rpx;
+}
+
+/* 订单卡片样式 */
+.stats-box {
+  background: #ffffff;
+  border-radius: 28rpx;
+  padding: 30rpx 0 10rpx;
+  box-shadow: 0 10rpx 30rpx rgba(0, 0, 0, 0.04);
+}
+
+.box-title {
+  padding: 0 40rpx 20rpx;
+  font-size: 30rpx;
+  font-weight: 600;
+  color: #333;
+}
+
+/* 菜单列表样式 */
+.menu-box {
+  margin-top: 30rpx;
+  border-radius: 28rpx;
+  overflow: hidden;
+  box-shadow: 0 10rpx 30rpx rgba(0, 0, 0, 0.04);
+}
+
+.menu-group {
+  margin: 0 !important; /* 覆盖 Vant 默认外边距 */
+}
+
+/* 退出登录按钮优化 */
+.logout-section {
+  margin-top: 60rpx;
+  padding: 0 20rpx;
+}
+
+.custom-logout-btn {
+  width: 100%;
+  height: 90rpx;
+  line-height: 90rpx;
+  background: #ffffff;
+  color: #969799;
+  font-size: 28rpx;
+  border-radius: 45rpx;
+  border: 1px solid #ebedf0;
+  font-weight: normal;
+}
+
+.custom-logout-btn::after {
+  border: none;
+}

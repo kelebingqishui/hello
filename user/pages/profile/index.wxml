@@ -1,0 +1,32 @@
+<view class="page-container">
+  <view class="premium-header">
+    <view class="bg-blur-dot"></view>
+  </view>
+
+  <view class="main-content">
+    <view class="avatar-edit-wrapper">
+      <button class="avatar-button" open-type="chooseAvatar" bindchooseavatar="onChooseAvatar">
+        <image class="avatar-image" src="{{ userInfo.avatar || '/assets/default-avatar.png' }}" mode="aspectFill"></image>
+        <view class="edit-badge">
+          <van-icon name="photograph" size="14px" color="#fff" />
+        </view>
+      </button>
+      <view class="user-id-tag">UID: {{ userInfo.userId || '---' }}</view>
+    </view>
+
+    <view class="info-card-section">
+      <van-cell-group inset custom-class="profile-group-custom">
+        <van-field label="昵称" value="{{ userInfo.nickName }}" placeholder="请输入昵称" input-align="right" type="nickname" border="{{ true }}" bind:blur="onNickNameBlur" />
+        <van-cell title="手机号" value="{{ userInfo.phone || '未绑定' }}" is-link />
+        <van-cell title="邮箱" value="{{ userInfo.email || '未绑定' }}" is-link />
+        <van-cell title="性别" value="{{ userInfo.sex === '0' ? '男' : (userInfo.sex === '1' ? '女' : '未知') }}" border="{{ false }}" is-link bindtap="onSexTap" />
+      </van-cell-group>
+    </view>
+
+    <view class="action-section">
+      <van-button custom-class="system-btn-main" block round bindtap="saveProfile" loading="{{ loading }}">保存修改</van-button>
+    </view>
+  </view>
+</view>
+
+<van-action-sheet show="{{ showSexSheet }}" actions="{{ sexActions }}" cancel-text="取消" bind:close="onSexClose" bind:select="onSexSelect" />

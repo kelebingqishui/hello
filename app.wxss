@@ -1,0 +1,95 @@
+/**app.wxss**/
+.container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 200rpx 0;
+  box-sizing: border-box;
+}
+/* app.wxss */
+
+/**
+ * 1. 核心设计变量
+ */
+ page {
+  /* 品牌色调 - 保持系统高级感的基准 */
+  --color-primary: #1989fa;
+  --color-primary-light: #ecf5ff;
+  --color-success: #07c160;
+  --color-warning: #ff976a;
+  --color-danger: #ee0a24;
+  
+  /* 文字颜色 - 层次感源于对比度 */
+  --text-main: #323233;      /* 主标题 */
+  --text-second: #646566;    /* 次要信息 */
+  --text-tips: #969799;      /* 提示文字/禁用状态 */
+  
+  /* 背景颜色 */
+  --bg-card: #ffffff;        /* 卡片底色 */
+  --bg-page: #f8f9fc;
+  
+  /* 统一装饰 */
+  --radius-max: 40rpx;       /* 大圆角：主卡片、顶部背景 */
+  --radius-main: 24rpx;      /* 中圆角：普通卡片、功能块 */
+  --radius-btn: 48rpx;       /* 按钮圆角 */
+  
+  /* 柔和阴影 - 高级感的灵魂 */
+  --shadow-base: 0 4rpx 24rpx rgba(0, 0, 0, 0.05);
+  --shadow-active: 0 8rpx 32rpx rgba(25, 137, 250, 0.15);
+
+  /* 统一背景梯度 */
+  --grad-header: linear-gradient(180deg, #1989fa 0%, #3a91f5 70%, #f7f8fa 100%);
+  --grad-btn: linear-gradient(90deg, #1989fa 0%, #3a91f5 100%);
+
+  background-color: var(--bg-page);
+  font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Helvetica, Segoe UI, Arial, Roboto, 'PingFang SC', 'miui', 'Hiragino Sans GB', 'Microsoft Yahei', sans-serif;
+}
+
+/**
+ * 2. 通用原子类 (让页面代码极简)
+ */
+
+/* 统一的沉浸式页面容器 */
+.page-container {
+  min-height: 100vh;
+  position: relative;
+}
+
+/* 统一的顶部渐变背景 */
+.system-header-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 440rpx;
+  background: var(--grad-header);
+  z-index: 0;
+}
+
+/* 统一的悬浮卡片 */
+.system-card {
+  background: var(--bg-card);
+  border-radius: var(--radius-main);
+  box-shadow: var(--shadow-base);
+  overflow: hidden;
+  margin: 24rpx 32rpx;
+}
+
+/* 统一的主按钮样式覆盖 (配合 Vant) */
+.system-btn-main {
+  --button-primary-background-color: var(--grad-btn) !important;
+  --button-primary-border-color: transparent !important;
+  font-weight: 600 !important;
+  box-shadow: 0 10rpx 20rpx rgba(177, 209, 240, 0.2) !important;
+}
+
+.official-section {
+  margin: 32rpx !important; /* 保持与 van-cell-group 的间距一致 */
+  border-radius: var(--radius-main); /* 统一使用 app.wxss 的圆角变量 */
+  overflow: hidden;
+  box-shadow: var(--shadow-base);
+  background: #fff; /* 强制背景色，防止加载瞬间闪烁 */
+  border: 1rpx solid rgba(0, 0, 0, 0.02); /* 极细边框增加精致感 */
+}

@@ -1,0 +1,9 @@
+{
+  "navigationBarTitleText": "更换手机号",
+  "usingComponents": {
+    "van-cell-group": "@vant/weapp/cell-group/index",
+    "van-field": "@vant/weapp/field/index",
+    "van-button": "@vant/weapp/button/index",
+    "van-count-down": "@vant/weapp/count-down/index"
+  }
+}

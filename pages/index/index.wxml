@@ -1,0 +1,74 @@
+<view class="page-container">
+  <view class="home-header">
+    <view class="header-content">
+      <view class="welcome-text">
+        <text class="greeting">早安，{{ userInfo.nickName || '铲屎官' }}</text>
+        <text class="motto">今天也要好好记录主子的生活呀~</text>
+      </view>
+      <view class="pet-status-card" bindtap="toPetDetail">
+        <image class="pet-avatar" src="/assets/cat-avatar.png" mode="aspectFill"></image>
+        <view class="pet-info">
+          <text class="pet-name">小奶油</text>
+          <text class="pet-desc">已陪伴你 365 天</text>
+        </view>
+        <van-icon name="arrow" color="#fff" />
+      </view>
+    </view>
+    <view class="header-bg-shape"></view>
+  </view>
+
+  <view class="main-content">
+    <view class="stats-overview system-card">
+      <view class="stats-item">
+        <text class="stats-val">￥1280.00</text>
+        <text class="stats-label">本月支出</text>
+      </view>
+      <view class="divider"></view>
+      <view class="stats-item">
+        <text class="stats-val">12</text>
+        <text class="stats-label">本月记账</text>
+      </view>
+    </view>
+
+    <view class="quick-nav">
+      <view class="nav-item" bindtap="toAddRecord">
+        <view class="nav-icon-box bg-blue">
+          <van-icon name="edit" size="28px" color="#fff" />
+        </view>
+        <text>记一笔</text>
+      </view>
+      <view class="nav-item" bindtap="toReport">
+        <view class="nav-icon-box bg-green">
+          <van-icon name="chart-trending-o" size="28px" color="#fff" />
+        </view>
+        <text>看报表</text>
+      </view>
+      <view class="nav-item" bindtap="toRemind">
+        <view class="nav-icon-box bg-orange">
+          <van-icon name="bell" size="28px" color="#fff" />
+        </view>
+        <text>闹钟提醒</text>
+      </view>
+      <view class="nav-item" bindtap="toEncyclopedia">
+        <view class="nav-icon-box bg-purple">
+          <van-icon name="aim" size="28px" color="#fff" />
+        </view>
+        <text>猫咪百科</text>
+      </view>
+    </view>
+
+    <view class="recent-section">
+      <view class="section-title">
+        <text>最近记录</text>
+        <text class="more" bindtap="toList">查看全部</text>
+      </view>
+      <view class="system-card list-card">
+        <van-cell-group border="{{ false }}">
+          <van-cell title="购买猫粮" label="10月27日 14:00" value="-￥299.00" value-class="expend-amount" center icon="shopping-cart-o" />
+          <van-cell title="宠物洗澡" label="10月25日 10:00" value="-￥88.00" value-class="expend-amount" center icon="shop-o" />
+          <van-cell title="疫苗接种" label="10月20日 09:00" value="-￥150.00" value-class="expend-amount" border="{{ false }}" center icon="medal-o" />
+        </van-cell-group>
+      </view>
+    </view>
+  </view>
+</view>

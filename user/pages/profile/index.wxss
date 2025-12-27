@@ -1,0 +1,86 @@
+/* 仅处理本页面特有的布局结构 */
+.main-content {
+  position: relative;
+  z-index: 1;
+  padding-top: 60rpx;
+}
+
+/* 头像布局 */
+.avatar-edit-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 40rpx;
+}
+
+.avatar-button {
+  width: 180rpx !important;
+  height: 180rpx !important;
+  padding: 0;
+  border-radius: 50%;
+  background: var(--bg-card);
+  border: 6rpx solid var(--bg-card);
+  box-shadow: var(--shadow-base); /* 引用全局阴影 */
+  position: relative;
+  overflow: visible;
+}
+
+.avatar-button::after {
+  border: none;
+}
+
+.avatar-image {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+}
+
+.user-id-tag {
+  margin-top: 24rpx;
+  font-size: 24rpx;
+  color: #a0aab7;
+  letter-spacing: 1px;
+}
+
+.edit-badge {
+  position: absolute;
+  right: 5rpx;
+  bottom: 5rpx;
+  width: 48rpx;
+  height: 48rpx;
+  background: var(--color-primary); /* 引用全局品牌色 */
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 4rpx solid var(--bg-card);
+}
+
+.user-id {
+  margin-top: 20rpx;
+  font-size: 24rpx;
+  color: #ffffff;
+  background: rgba(0, 0, 0, 0.15);
+  padding: 4rpx 20rpx;
+  border-radius: 20rpx;
+}
+
+/* 覆盖 Vant 组件样式使其符合系统圆角 */
+.profile-group-custom {
+  margin: 0 !important;
+  box-shadow: var(--shadow-base) !important;
+  border-radius: var(--radius-main) !important;
+}
+
+/* 底部区域 */
+.action-section {
+  margin-top: 80rpx;
+  padding: 0 48rpx;
+}
+
+.back-link {
+  text-align: center;
+  margin-top: 32rpx;
+  color: var(--text-tips);
+  font-size: 21rpx;
+}

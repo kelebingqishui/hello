@@ -1,0 +1,44 @@
+<view class="user-container">
+  <view class="header-section">
+    <view class="user-card">
+      <view class="user-info-main">
+        <image class="avatar" src="{{ userInfo.avatar || '/assets/default-avatar.png' }}" mode="aspectFill" binderror="handleAvatarError"></image>
+        <view class="user-text">
+          <text class="user-name" bindtap="clickNickName">{{ userInfo.nickName || '未认证用户' }}</text>
+          <text class="user-phone">{{ userInfo.phone || '' }}</text>
+        </view>
+      </view>
+      <van-icon name="setting-o" class="header-set-icon" bindtap="toSettings" />
+    </view>
+  </view>
+
+  <view class="content-wrapper">
+    <view class="stats-box system-card">
+      <view class="box-title">我的订单</view>
+      <van-grid column-num="4" border="{{ false }}">
+        <van-grid-item icon="pending-payment" text="待付款" badge="2" />
+        <van-grid-item icon="tosend" text="待发货" />
+        <van-grid-item icon="logistics" text="待收货" />
+        <van-grid-item icon="comment-o" text="待评价" />
+      </van-grid>
+    </view>
+
+    <view class="menu-box">
+      <van-cell-group inset custom-class="menu-group">
+        <van-cell title="我的地址" icon="location-o" is-link />
+        <van-cell title="我的收藏" icon="star-o" is-link />
+        <van-cell title="领券中心" icon="coupon-o" is-link />
+        <van-cell title="联系客服" icon="service-o" is-link open-type="contact" />
+        <van-cell title="关于我们" icon="info-o" is-link border="{{ false }}" />
+      </van-cell-group>
+    </view>
+    <!-- <view class="official-section">
+      <official-account bindload="onGuideLoad" binderror="onGuideError">
+      </official-account>
+    </view> -->
+
+    <view class="logout-section">
+      <button class="custom-logout-btn" bindtap="handleLogout">退出当前账号</button>
+    </view>
+  </view>
+</view>

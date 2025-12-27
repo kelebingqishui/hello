@@ -1,0 +1,88 @@
+<view class="page-container">
+  <view class="header-bg"></view>
+
+  <view class="content-wrapper">
+    <view class="welcome-box">
+      <view class="title">欢迎登录</view>
+      <view class="subtitle">登录后开启您的智能服务之旅</view>
+    </view>
+
+    <view class="login-card">
+      <van-cell-group border="{{ false }}">
+        <van-field
+          value="{{ phone }}"
+          label="手机号码"
+          placeholder="请输入手机号码"
+          type="number"
+          maxlength="11"
+          focus
+          bind:input="onPhoneInput"
+          custom-style="padding: 30rpx 0;"
+        />
+        
+        <van-field
+          value="{{ code }}"
+          label="验证码"
+          placeholder="请输入6位验证码"
+          type="number"
+          maxlength="6"
+          use-button-slot
+          bind:input="onCodeInput"
+          custom-style="padding: 30rpx 0;"
+        >
+          <van-button 
+            slot="button" 
+            size="small" 
+            round 
+            plain
+            type="primary"
+            disabled="{{ !isPhoneValid || countdown > 0 }}"
+            bind:tap="getVerCode"
+            custom-style="min-width: 180rpx;"
+          >
+            {{ countdown > 0 ? countdown + 's' : '获取验证码' }}
+          </van-button>
+        </van-field>
+      </van-cell-group>
+
+      <view class="login-btn-wrap">
+        <van-button 
+          round 
+          block 
+          type="primary" 
+          bind:tap="handleLogin"
+          custom-class="main-btn"
+        >
+          登 录
+        </van-button>
+      </view>
+
+      <view class="protocol-box {{ shakeAnim ? 'shake' : '' }}">
+        <van-checkbox value="{{ agree }}" icon-size="16px" checked-color="#07c160" bind:change="onAgreeChange">
+          <view class="protocol-text">
+            我已阅读并同意 <text class="link">《服务协议》</text>与<text class="link">《隐私政策》</text>
+          </view>
+        </van-checkbox>
+      </view>
+    </view>
+
+    <view class="footer-area">
+      <view class="divider">
+        <text class="divider-line"></text>
+        <text class="divider-text">其他登录方式</text>
+        <text class="divider-line"></text>
+      </view>
+
+      <view class="social-login">
+        <button class="wechat-btn" bindtap="handleWechatLogin">
+          <view class="icon-circle">
+            <van-icon name="wechat" size="32px" color="#07c160" />
+          </view>
+          <text>微信一键登录</text>
+        </button>
+      </view>
+    </view>
+  </view>
+</view>
+
+<van-toast id="van-toast" />
