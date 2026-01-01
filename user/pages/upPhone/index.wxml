@@ -4,13 +4,13 @@
   <view class="main-content">
     <view class="header-guide">
       <view class="guide-title">更换手机号</view>
-      <view class="guide-desc">验证通过后，下次可使用新手机号登录</view>
+      <view class="guide-desc">验证通过后，需要重新登录；可使用新手机号登录</view>
     </view>
 
     <view class="system-card">
       <van-cell-group border="{{ false }}">
         <van-field
-          label="当前手机"
+          label="当前绑定号码"
           value="{{ desensitizedPhone }}"
           disabled
           input-align="right"
@@ -18,7 +18,7 @@
         />
         
         <van-field
-          label="新手机号"
+          label="新手机号码"
           value="{{ newPhone }}"
           placeholder="请输入新手机号"
           input-align="right"

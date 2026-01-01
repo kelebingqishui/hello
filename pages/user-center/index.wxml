@@ -5,7 +5,7 @@
         <image class="avatar" src="{{ userInfo.avatar || '/assets/default-avatar.png' }}" mode="aspectFill" binderror="handleAvatarError"></image>
         <view class="user-text">
           <text class="user-name" bindtap="clickNickName">{{ userInfo.nickName || '未认证用户' }}</text>
-          <text class="user-phone">{{ userInfo.phone || '' }}</text>
+          <text class="user-phone">{{ desPhone || '' }}</text>
         </view>
       </view>
       <van-icon name="setting-o" class="header-set-icon" bindtap="toSettings" />
@@ -13,7 +13,7 @@
   </view>
 
   <view class="content-wrapper">
-    <view class="stats-box system-card">
+    <view class="stats-box">
       <view class="box-title">我的订单</view>
       <van-grid column-num="4" border="{{ false }}">
         <van-grid-item icon="pending-payment" text="待付款" badge="2" />

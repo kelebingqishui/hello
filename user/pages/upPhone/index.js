@@ -1,9 +1,10 @@
 const app = getApp();
+const util = require('../../../utils/util');
 
 Page({
   data: {
     oldPhone: '',
-    desensitizedPhone: '', // 脱敏后的手机号
+    desensitizedPhone: '',
     newPhone: '',
     code: '',
     counting: false,
@@ -12,10 +13,10 @@ Page({
   },
 
   onLoad() {
-    const phone = app.globalData.userInfo.phone || '17633623801';
+    const phone = app.globalData.userInfo.phone;
     this.setData({
       oldPhone: phone,
-      desensitizedPhone: phone.replace(/(\3)\d{4}(\d{4})/, '$1****$2')
+      desensitizedPhone: util.desensitizedPhone(phone)
     });
   },
 
@@ -35,12 +36,20 @@ Page({
 
   // 发送验证码
   async sendCode() {
-    if (this.data.newPhone.length !== 11) {
+    if (!util.validatePhone(this.data.newPhone)) {
       return wx.showToast({ title: '手机号格式不正确', icon: 'none' });
     }
-    
-    wx.showLoading({ title: '获取中...' });
-    // 模拟接口调用
+    const { oldPhone, newPhone } = this.data;
+    if (oldPhone === newPhone) {
+      wx.showToast({
+        title: '手机号不可相同',
+        icon: 'error'
+      })
+      return;
+    }
+    wx.showLoading({ title: '发送中...' });
+    await app.api.userApi.getSmsCode(this.data.newPhone, { type: '1' }, { showLoading: false });
+    wx.hideLoading();
     setTimeout(() => {
       wx.hideLoading();
       this.setData({ counting: true });
@@ -55,18 +64,30 @@ Page({
   // 提交修改
   async submitChange() {
     this.setData({ loading: true });
-    
+
     try {
-      // 实际调用后端接口
-      // const res = await app.api.user.updatePhone({ phone: this.data.newPhone, code: this.data.code });
-      
-      setTimeout(() => {
-        wx.showToast({ title: '更换成功', icon: 'success' });
-        // 同步更新全局数据
-        app.globalData.userInfo.phone = this.data.newPhone;
-        
-        setTimeout(() => wx.navigateBack(), 1500);
-      }, 1000);
+      const params = {
+        oldPhone: this.data.oldPhone,
+        newPhone: this.data.newPhone,
+        code: this.data.code
+      }
+      const updateResp = await app.api.userApi.updatePhone(params)
+      if (updateResp.data.code === 200) {
+        const userInfoRes = await app.api.userApi.getUserInfo({ showLoading: false });
+        const userInfo = userInfoRes.data?.data || userInfoRes.data;
+        wx.setStorageSync('userInfo', userInfo);
+        app.globalData.userInfo = userInfo;
+        // 更新成功
+        setTimeout(() => {
+          wx.showToast({ title: '更换成功', icon: 'success' });
+          setTimeout(() => wx.navigateBack(), 800);
+        }, 500);
+      } else {
+        wx.showToast({
+          title: updateResp.data.message || '更改手机号错误',
+          icon: 'error'
+        })
+      }
     } finally {
       this.setData({ loading: false });
     }

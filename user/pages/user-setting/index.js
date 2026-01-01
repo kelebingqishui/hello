@@ -1,20 +1,26 @@
 import Dialog from '@vant/weapp/dialog/dialog';
+import { desensitizedPhone } from '../../../utils/util'
 
 const app = getApp();
 
 Page({
   data: {
-    userInfo: null
+    userInfo: null,
+    desPhone: ''
   },
-
-  onLoad() {
-    // 从全局获取用户信息展示
+  onShow() {
     this.setData({
-      userInfo: wx.getStorageSync('userInfo')
+      userInfo: wx.getStorageSync('userInfo'),
+      desPhone: desensitizedPhone(wx.getStorageSync('userInfo').phone)
     });
   },
 
-  // 清理缓存模拟
+  handlePrivacyProtocol() {
+    wx.openPrivacyContract({
+      success: () => {}
+    })
+  },
+
   clearCache() {
     wx.showModal({
       title: '提示',
@@ -24,13 +30,9 @@ Page({
           wx.showLoading({ title: '清理中...', mask: true });
   
           try {
-            // 清除所有的 Storage
-            // 这里采取保留登录信息的策略：
             const token = wx.getStorageSync('token');
             const userInfo = wx.getStorageSync('userInfo');
-            
-            wx.clearStorageSync(); // 全清
-            
+            wx.clearStorageSync();
             // 恢复关键数据，防止用户被迫退出
             wx.setStorageSync('token', token);
             wx.setStorageSync('userInfo', userInfo);

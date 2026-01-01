@@ -18,37 +18,27 @@ App({
       console.log('自动登录');
       // 自动登录
       this.autoLogin();
-      const pa = {
-        "withCredentials": true,
-        "lang": 'zh_CN'
-      }
-      wx.getUserInfo(pa);
     } else {
       console.log('token存在,获取用户信息');
-      // 本地存储有token,请求用户信息
       const that = this;
       // 这个请求会判断授权信息是否正确,如果不正确会自动跳转登录页
-      that.api.userApi.getUserInfo({ showLoading: false }).then(res => {
-        // 注意：这里使用 res，它是后端返回的真实数据
-        console.log('用户信息成功获取:', res.data);
+      that.api.userApi.getUserInfo({ showLoading: false })
+        .then(res => {
+          if (res.data.code === 200) {
+            const userData = res.data.data;
+            wx.setStorageSync('userInfo', userData);
+            that.globalData.userInfo = userData;
 
-        const userData = res.data?.data;
-        if (userData) {
-          wx.setStorageSync('userInfo', userData);
-          that.globalData.userInfo = userData;
-        }
-      }).catch(err => {
-        console.error('获取用户信息失败', err);
-      });
-      if (!token) {
-        console.log('未检测到 Token，跳转登录页');
-        wx.reLaunch({ url: '/login/pages/phone/index' });
-      }
-      this.initLogs();
-      // 跳转首页
-      wx.switchTab({
-        url: '/pages/index/index',
-      })
+            wx.switchTab({ url: '/pages/index/index' });
+          } else {
+            throw new Error(res.data.message || '有点问题');
+          }
+        }).catch(err => {
+          wx.showToast({
+            title: err,
+            icon: 'error'
+          });
+        });
     }
   },
 
@@ -66,7 +56,7 @@ App({
           const param = { cipher: JSON.stringify(requestData) };
 
           // 发起微信登录请求
-          const response = await that.api.loginApi.userLogin(param, { msg: '自动登录中...' });
+          const response = await that.api.loginApi.userLogin(param, { msg: '登录中...' });
 
           // 解析 Cookie
           const setCookie = response.header['Set-Cookie'] || response.header['set-cookie'];
@@ -91,12 +81,11 @@ App({
           wx.setStorageSync('userInfo', userInfo);
           that.globalData.userInfo = userInfo;
 
+          wx.showToast({ title: '登录成功', icon: 'success', mask: true });
           // 跳转首页
-          setTimeout(() => {
-            wx.showToast({ title: '登录成功', icon: 'success' });
+          setTimeout(() => {    
             wx.switchTab({ url: '/pages/index/index' });
-          }, 500);
-
+          }, 800);
         } catch (error) {
           // 微信自动登录错误,跳转登录页
           wx.reLaunch({ url: '/login/pages/phone/index' });
@@ -107,12 +96,6 @@ App({
         wx.reLaunch({ url: '/login/pages/phone/index' });
       }
     })
-  },
-
-  initLogs() {
-    const logs = wx.getStorageSync('logs') || [];
-    logs.unshift(Date.now());
-    wx.setStorageSync('logs', logs);
   },
 
   globalData: {

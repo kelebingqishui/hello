@@ -23,11 +23,18 @@
     "miniprogram": {
       "list": [
         {
+          "name": "user/pages/upPhone/index",
+          "pathName": "user/pages/upPhone/index",
+          "query": "",
+          "scene": null,
+          "launchMode": "default"
+        },
+        {
           "name": "pages/index/index",
           "pathName": "pages/index/index",
           "query": "",
-          "scene": 1011,
-          "launchMode": "default"
+          "launchMode": "default",
+          "scene": 1011
         },
         {
           "name": "登录",

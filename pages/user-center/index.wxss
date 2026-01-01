@@ -72,12 +72,12 @@ page {
   border-radius: 28rpx;
   padding: 30rpx 0 10rpx;
   box-shadow: 0 10rpx 30rpx rgba(0, 0, 0, 0.04);
+  overflow: hidden;
 }
 
 .box-title {
   padding: 0 40rpx 20rpx;
   font-size: 30rpx;
-  font-weight: 600;
   color: #333;
 }
 

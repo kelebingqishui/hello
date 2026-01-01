@@ -77,6 +77,14 @@
   margin: 24rpx 32rpx;
 }
 
+.common-card {
+  background: #ffffff;
+  border-radius: 28rpx;
+  padding: 30rpx 0 10rpx;
+  box-shadow: 0 10rpx 30rpx rgba(0, 0, 0, 0.04);
+  overflow: hidden;
+}
+
 /* 统一的主按钮样式覆盖 (配合 Vant) */
 .system-btn-main {
   --button-primary-background-color: var(--grad-btn) !important;

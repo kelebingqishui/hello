@@ -1,0 +1,9 @@
+<view class="container">
+  <view class="content-view">
+    <rich-text nodes="{{content}}" class="protocol-text"></rich-text>
+  </view>
+  
+  <view class="footer">
+    <button class="btn-confirm" bindtap="handleBack">返回</button>
+  </view>
+</view>

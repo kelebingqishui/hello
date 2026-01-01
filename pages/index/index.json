@@ -1,5 +1,7 @@
 {
-  "navigationBarTitleText": "首页",
+  "navigationBarTitleText": "",
+  "navigationBarBackgroundColor": "#1989fa",
+  "navigationStyle": "custom",
   "usingComponents": {
     "van-icon": "@vant/weapp/icon/index",
     "van-cell": "@vant/weapp/cell/index",

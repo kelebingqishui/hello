@@ -19,8 +19,9 @@ page {
 }
 
 .welcome-box {
-  padding: 100rpx 0 60rpx 20rpx;
+  padding: 150rpx 0 60rpx 20rpx;
   color: #fff;
+  margin-bottom: 60rpx;
 }
 
 .welcome-box .title {

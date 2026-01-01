@@ -35,6 +35,24 @@ Page({
     this.setData({ agree: e.detail });
   },
 
+  /**
+   * 查看协议详情
+   * @param {Object} e - 事件对象，通过 data-type 区分协议类型
+   */
+  onViewProtocol(e) {
+    const type = e.currentTarget.dataset.type;
+    if (type && type === 'privacy') {
+      wx.openPrivacyContract({
+        success: () => { }
+      })
+    } else {
+      // 用户协议
+      wx.navigateTo({
+        url: '/user/pages/user-protocol/index'
+      });
+    }
+  },
+
   async getVerCode() {
     // 倒计时校验
     if (this.data.countdown > 0 || this.data.smsLoading) {
@@ -113,7 +131,10 @@ Page({
       // 触发抖动效果
       this.setData({ shakeAnim: true });
       setTimeout(() => this.setData({ shakeAnim: false }), 400);
-      Toast('请先同意协议');
+      wx.showToast({
+        title: '请阅读并同意相关协议政策',
+        icon: 'none'
+      });
       return;
     }
 
@@ -152,8 +173,10 @@ Page({
 
   handleWechatLogin() {
     if (!this.data.agree) {
+      this.setData({ shakeAnim: true });
+      setTimeout(() => this.setData({ shakeAnim: false }), 500);
       wx.showToast({
-        title: '请阅读并同意协议',
+        title: '请阅读并同意相关协议政策',
         icon: 'none'
       });
       return;

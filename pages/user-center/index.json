@@ -1,5 +1,6 @@
 {
   "navigationBarTitleText": "个人中心",
+  "navigationStyle": "custom",
   "usingComponents": {
     "van-icon": "@vant/weapp/icon/index",
     "van-grid": "@vant/weapp/grid/index",

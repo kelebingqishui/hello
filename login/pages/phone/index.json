@@ -9,5 +9,6 @@
   },
   "navigationBarTitleText": "账号登录",
   "navigationBarBackgroundColor": "#07c160",
-  "navigationBarTextStyle": "white"
+  "navigationBarTextStyle": "white",
+  "navigationStyle": "custom"
 }

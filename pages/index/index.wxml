@@ -6,10 +6,18 @@
         <text class="motto">今天也要好好记录主子的生活呀~</text>
       </view>
       <view class="pet-status-card" bindtap="toPetDetail">
-        <image class="pet-avatar" src="/assets/cat-avatar.png" mode="aspectFill"></image>
+        <image class="pet-avatar" src="https://storage.ileyi.cn/miniprogram/2026/01-01/avatar/cfe5b2b445f04d5da51e9589c0e65ad0.jpg" mode="aspectFill"></image>
         <view class="pet-info">
-          <text class="pet-name">小奶油</text>
-          <text class="pet-desc">已陪伴你 365 天</text>
+          <text class="pet-name">咪咪</text>
+          <text class="pet-desc">已陪伴你 {{ mmDate }} 天</text>
+        </view>
+        <van-icon name="arrow" color="#fff" />
+      </view>
+      <view class="pet-status-card" bindtap="toPetDetail">
+        <image class="pet-avatar" src="https://storage.ileyi.cn/miniprogram/2026/01-01/avatar/60c82f6615154ff1955971854a9323fa.png" mode="aspectFill"></image>
+        <view class="pet-info">
+          <text class="pet-name">有才</text>
+          <text class="pet-desc">已陪伴你 {{ ycDate }} 天</text>
         </view>
         <van-icon name="arrow" color="#fff" />
       </view>
@@ -62,7 +70,7 @@
         <text>最近记录</text>
         <text class="more" bindtap="toList">查看全部</text>
       </view>
-      <view class="system-card list-card">
+      <view class="list-card">
         <van-cell-group border="{{ false }}">
           <van-cell title="购买猫粮" label="10月27日 14:00" value="-￥299.00" value-class="expend-amount" center icon="shopping-cart-o" />
           <van-cell title="宠物洗澡" label="10月25日 10:00" value="-￥88.00" value-class="expend-amount" center icon="shop-o" />

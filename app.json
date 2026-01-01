@@ -7,9 +7,10 @@
     {
       "root": "user",
       "pages": [
-        "pages/user-center/index",
+        "pages/user-setting/index",
         "pages/profile/index",
-        "pages/upPhone/index"
+        "pages/upPhone/index",
+        "pages/user-protocol/index"
       ]
     },
     {
@@ -26,7 +27,7 @@
     "backgroundTextStyle": "dark"
   },
   "tabBar": {
-    "selectedColor": "#d81e06",
+    "selectedColor": "#1989fa",
     "color": "#bfbfbf",
     "borderStyle": "black",
     "position": "bottom",

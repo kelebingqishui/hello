@@ -27,7 +27,7 @@
 
 /* 顶部宠物小卡片 */
 .pet-status-card {
-  margin-top: 40rpx;
+  margin-top: 20rpx;
   background: rgba(255, 255, 255, 0.15);
   backdrop-filter: blur(10px); /* 磨砂玻璃效果 */
   border-radius: var(--radius-main);
@@ -47,6 +47,14 @@
 .pet-info {
   flex: 1;
   margin-left: 24rpx;
+}
+
+.list-card {
+  background: #ffffff;
+  border-radius: 28rpx;
+  padding: 30rpx 0 10rpx;
+  box-shadow: 0 10rpx 30rpx rgba(0, 0, 0, 0.04);
+  overflow: hidden;
 }
 
 .pet-name {

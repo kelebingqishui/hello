@@ -1,6 +1,8 @@
 // index.js
 const defaultAvatarUrl = 'https://mmbiz.qpic.cn/mmbiz/icTdbqWNOwNRna42FI242Lcia07jQodd2FJGIYQfG0LAJGFxM4FbnQP6yfMxBgJ0F3YRqJCJ1aPAK2dQagdusBZg/0'
 
+import { getRemainingDays } from '../../utils/util'
+
 Page({
   data: {
     motto: 'Hello World',
@@ -11,6 +13,19 @@ Page({
     hasUserInfo: false,
     canIUseGetUserProfile: wx.canIUse('getUserProfile'),
     canIUseNicknameComp: wx.canIUse('input.type.nickname'),
+    ycDate: null,
+    mmDate: null
+  },
+  onLoad() {
+    this.setData({
+      'userInfo.nickName': wx.getStorageSync('userInfo').nickName
+    })
+  },
+  onShow() {
+    this.setData({
+      mmDate: getRemainingDays('2023-01-27'),
+      ycDate: getRemainingDays('2024-01-28')
+    })
   },
   bindViewTap() {
     wx.navigateTo({

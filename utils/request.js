@@ -7,7 +7,7 @@ const env = accountInfo.miniProgram.envVersion;
 const envConfig = {
   // 开发环境
   'develop': 'http://192.168.31.192:9999/api',
-  // 体验版
+  // 体验环境
   'trial': 'https://mpadmin.ileyi.cn/api',
   // 正式环境
   'release': 'https://mpadmin.ileyi.cn/api'
@@ -48,17 +48,37 @@ const request = (options) => {
         console.log('网络请求成功响应:', res);
         // 统一拦截业务状态码
         if (res.statusCode === 200) {
-          // 后端返回 { code: 200, data: ..., msg: ... }
+          // 后端返回 { code: 200, data: ..., message: ... }
           if (res.data.code === 200) {
             resolve(res);
-          } else if(res.data.code == 1101) {
-            wx.navigateTo({ url: '/login/pages/phone/index' });
+          } else if (res.data.code == 1101) {
+            // 认证失败，需跳准到登录页
+            wx.reLaunch({
+              url: '/login/pages/phone/index',
+              success: () => {
+                console.log('认证失败跳转成功');
+              },
+              fail: (err) => {
+                console.log('跳转失败：', err);
+              }
+            });
             reject(res);
           } else {
-            setTimeout(() => {
-              wx.showToast({ title: res.data.message || '服务器开小差了', icon: 'error' });
-            }, 600);
-            reject(res.data);
+            // 其他错误判断是否配置了拦截
+            if (options.noReject) {
+              // 放行，页面具体处理
+              resolve(res);
+            } else {
+              setTimeout(() => {
+                wx.showModal({
+                  title: '系统提示',
+                  content: res.data.message || '服务器开小差了',
+                  showCancel: false,
+                  confirmColor: '#1989fa'
+                });
+              }, 600);
+              reject(res.data);
+            }
           }
         } else if (res.statusCode === 401) {
           // Token 过期处理
@@ -84,7 +104,6 @@ const request = (options) => {
   });
 };
 
-// 导出常用方法
 export const http = {
   get(url, params, options = {}) {
     return request({ url, params, method: 'GET', ...options });

@@ -9,50 +9,17 @@
 
     <view class="login-card">
       <van-cell-group border="{{ false }}">
-        <van-field
-          value="{{ phone }}"
-          label="手机号码"
-          placeholder="请输入手机号码"
-          type="number"
-          maxlength="11"
-          focus
-          bind:input="onPhoneInput"
-          custom-style="padding: 30rpx 0;"
-        />
-        
-        <van-field
-          value="{{ code }}"
-          label="验证码"
-          placeholder="请输入6位验证码"
-          type="number"
-          maxlength="6"
-          use-button-slot
-          bind:input="onCodeInput"
-          custom-style="padding: 30rpx 0;"
-        >
-          <van-button 
-            slot="button" 
-            size="small" 
-            round 
-            plain
-            type="primary"
-            disabled="{{ !isPhoneValid || countdown > 0 }}"
-            bind:tap="getVerCode"
-            custom-style="min-width: 180rpx;"
-          >
+        <van-field value="{{ phone }}" label="手机号码" placeholder="请输入手机号码" type="number" maxlength="11" focus bind:input="onPhoneInput" custom-style="padding: 30rpx 0;" />
+
+        <van-field value="{{ code }}" label="验证码" placeholder="请输入6位验证码" type="number" maxlength="6" use-button-slot bind:input="onCodeInput" custom-style="padding: 30rpx 0;">
+          <van-button slot="button" size="small" round plain type="primary" disabled="{{ !isPhoneValid || countdown > 0 }}" bind:tap="getVerCode" custom-style="min-width: 180rpx;">
             {{ countdown > 0 ? countdown + 's' : '获取验证码' }}
           </van-button>
         </van-field>
       </van-cell-group>
 
       <view class="login-btn-wrap">
-        <van-button 
-          round 
-          block 
-          type="primary" 
-          bind:tap="handleLogin"
-          custom-class="main-btn"
-        >
+        <van-button round block type="primary" bind:tap="handleLogin" custom-class="main-btn">
           登 录
         </van-button>
       </view>
@@ -60,7 +27,10 @@
       <view class="protocol-box {{ shakeAnim ? 'shake' : '' }}">
         <van-checkbox value="{{ agree }}" icon-size="16px" checked-color="#07c160" bind:change="onAgreeChange">
           <view class="protocol-text">
-            我已阅读并同意 <text class="link">《服务协议》</text>与<text class="link">《隐私政策》</text>
+            我已阅读并同意
+            <text class="link" catchtap="onViewProtocol" data-type="service">《服务协议》</text>
+            与
+            <text class="link" catchtap="onViewProtocol" data-type="privacy">《隐私政策》</text>
           </view>
         </van-checkbox>
       </view>
